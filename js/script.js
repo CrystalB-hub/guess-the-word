@@ -21,7 +21,37 @@ progress(word);
 
 guessButton.addEventListener("click", function(e) {
     e.preventDefault();
+    message.innerText = "";
     const inputLetter = letterGuess.value;
-    console.log(inputLetter);
-    letterGuess.value = "";
-})
+    console.log(inputLetter);    
+    const validInput = validateInput(inputLetter);
+    console.log(validInput);
+    letterGuess.value = "";    
+  })
+
+//validate players input function
+const validateInput =  function(input){
+  const acceptedLetter = /[a-zA-Z]/;
+    //if no user input
+    if (input.length === 0) {
+    message.innerText = "Please enter a letter!";
+  }
+    else if (input.length > 1) {
+      //if user enters multiple letters
+    message.innerText = "Please enter only one letter.";
+  }
+    else if (input.match(acceptedLetter)) {
+      //if they input something other than a letter
+    message.innerText = "Please choose a letter A-Z.";
+  }
+    else {
+      //correct input
+    return input;
+  };
+};
+
+
+
+ 
+
+
